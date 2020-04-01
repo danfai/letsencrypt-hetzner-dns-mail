@@ -43,7 +43,7 @@ You can specify another user to mail the DNS change request to, additionally to 
 | --- | --- |
 |`MAIL_FROM`|The mail address the mail is sent from. You should have control over this mail.|
 |`HETZNER_USER`|Your account number at hetzner. Should be something like KNNNNNNNNNN where N is a decimal digit.|
-|`ZONE_FILE`|The file with the basic zone configuration for the dns file.|
+|`ZONE_FILE`|The file with the basic zone configuration for the dns file. You can use `$CERTBOT_DOMAIN` as parameter, if you have more than one zone configuration. See also [Manual Authenticator hooks documentation](https://certbot.eff.org/docs/using.html#hooks)|
 |||
 |`MAIL_SUBJECT`|The subject of the mail. Does not really matter, but might be helpful to be changed if you want to send a copy of the mails to you or a monitoring software.|
 |`MAIL_TO`|Here you can specify additional users that should receive the DNS change API requests. robot@robot.first-ns.de is required, additional mails can be specified with whitespaces between adresses.|
@@ -53,3 +53,5 @@ You can specify another user to mail the DNS change request to, additionally to 
 Another tool, that uses the HTTPs interface of Hetzner to modify the zone: https://github.com/macskay/hetzner-letsencrypt-wildcard-auto-renew 
 
 [Description of the API at wiki.hetzner.de](https://wiki.hetzner.de/index.php/E-Mail-Schnittstelle_Domain_Registration_Robot/en)
+
+[Manual Authenticator hooks documentation](https://certbot.eff.org/docs/using.html#hooks)
