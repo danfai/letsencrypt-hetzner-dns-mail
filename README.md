@@ -5,14 +5,14 @@ This script lets you create and renew certificates for letsencrypt with the dns 
 Ideally you want this script to be executed on a machine where no user has access (not your webserver) and later transmit the files to your server.
 
 ## Requirements/Install
-You need to specify a public gpg key in Hetzner [robot.your-server.de|robot]. The matching private key is used to sign your mail for the DNS change request and needs to be configured in the gpg keyring for the user sending the mail.
+You need to specify a public gpg key in Hetzner [robot](https://robot.your-server.de). The matching private key is used to sign your mail for the DNS change request and needs to be configured in the gpg keyring for the user sending the mail.
 To create a pair you can use (replace `MAIL_FROM`):
 `gpg --batch --passphrase ''  --quick-generate-key "MAIL_FROM <MAIL_FROM>"`
 
 This will print the public key to be specified in Hetzner robot.
 `gpg --export --armor MAIL_FROM`
 
-Additionally you need to specify the file for your basic DNS zone in hetzner-auth.sh `ZONE_FILE`. You may want to get an initial one from the robot. 
+Additionally you need to specify the file for your basic DNS zone in [hetzner-auth.sh](hetzner-auth.sh) `ZONE_FILE`. You may want to get an initial one from the robot. An example is in [example.zone](example.zone)
 
 This script runs on Linux systems and uses the following utilities:
 `dig mail gpg`
@@ -52,4 +52,4 @@ You can specify another user to mail the DNS change request to, additionally to 
 ## References
 Another tool, that uses the HTTPs interface of Hetzner to modify the zone: https://github.com/macskay/hetzner-letsencrypt-wildcard-auto-renew 
 
-[https://wiki.hetzner.de/index.php/E-Mail-Schnittstelle_Domain_Registration_Robot/en|Description of the API at wiki.hetzner.de]
+[Description of the API at wiki.hetzner.de](https://wiki.hetzner.de/index.php/E-Mail-Schnittstelle_Domain_Registration_Robot/en)
