@@ -59,9 +59,9 @@ grep -v '_acme-challenge' $ZONE_FILE >> $TMP_FILE
 echo "_acme-challenge 300 IN TXT \"$CERTBOT_VALIDATION\"" >> $TMP_FILE
 echo "/end" >> $TMP_FILE
 
-gpg $GPG_PARAMS --detach-sign --armor <$TMP_FILE >>$TMP_FILE
+gpg $GPG_PARAMS --clear-sign --armor <$TMP_FILE >>"$TMP_FILE.sig"
 
-mail -r "$MAIL_FROM" -s "$MAIL_SUBJECT" $MAIL_TO < $TMP_FILE
+mail -r "$MAIL_FROM" -s "$MAIL_SUBJECT" $MAIL_TO < "$TMP_FILE.sig"
 
 while true;
 do
